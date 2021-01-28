@@ -1,5 +1,8 @@
 name: k8s image sync
 on:
+  push:
+    branches:    
+      - master
   schedule:
   - cron: 0 */6 * * *
 jobs:
