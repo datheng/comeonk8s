@@ -3,14 +3,14 @@ apiVersion: kubeadm.k8s.io/v1beta2
 kind: InitConfiguration
 nodeRegistration:
   kubeletExtraArgs:
-    pod-infra-container-image: comeonk8s/pause:3.2
+    pod-infra-container-image: datheng/pause:3.2
 localAPIEndpoint:    
   advertiseAddress: 10.44.44.4
 ---
 apiVersion: kubeadm.k8s.io/v1beta2
 kind: ClusterConfiguration
 clusterName: kubernetes
-imageRepository: comeonk8s
+imageRepository: datheng
 kubernetesVersion: "v1.19.2"
 controlPlaneEndpoint: "k8s.it-bang.cn:6443"
 networking:
