@@ -1,0 +1,40 @@
+# https://godoc.org/k8s.io/kubernetes/cmd/kubeadm/app/apis/kubeadm/v1beta2
+apiVersion: kubeadm.k8s.io/v1beta2
+kind: InitConfiguration
+nodeRegistration:
+  kubeletExtraArgs:
+    pod-infra-container-image: comeonk8s/pause:3.2
+localAPIEndpoint:    
+  advertiseAddress: 10.44.44.4
+---
+apiVersion: kubeadm.k8s.io/v1beta2
+kind: ClusterConfiguration
+clusterName: kubernetes
+imageRepository: comeonk8s
+kubernetesVersion: "v1.19.2"
+controlPlaneEndpoint: "k8s.it-bang.cn:6443"
+networking:
+  podSubnet: 10.244.0.0/16
+apiServer:
+  extraArgs:
+    advertise-address: 192.168.195.174
+etcd:
+  # one of local or external
+  # local:
+  #   imageRepository: "k8s.gcr.io"
+  #   imageTag: "3.2.24"
+  #   dataDir: "/var/lib/etcd"
+  #   extraArgs:
+  #     listen-client-urls: "http://10.100.0.1:2379"
+  #   serverCertSANs:
+  #   -  "ec2-10-100-0-1.compute-1.amazonaws.com"
+  #   peerCertSANs:
+  #   - "10.100.0.1"
+  external:
+    endpoints:
+    - "https://192.168.195.167:2379"
+    - "https://192.168.195.146:2379"
+    - "https://192.168.195.4:2379"
+    caFile: "/opt/etcd/ssl/ca.pem"
+    certFile: "/opt/etcd/ssl/server.pem"
+    keyFile: "/opt/etcd/ssl/server-key.pem"
