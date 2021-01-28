@@ -1,6 +1,6 @@
-# Goto Kubernetes
+# Come On  k8s
 
-[![github workflow](https://github.com/datheng/comeonk8s/workflows/k8s%20image%20sync/badge.svg)](https://github.com/datheng/comeon8s/actions)
+![k8s image sync](https://github.com/datheng/comeonk8s/workflows/k8s%20image%20sync/badge.svg)
 
 ## 安装 `Kubernetes`
 
