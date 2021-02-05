@@ -66,6 +66,8 @@ $ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 
 # 使用 `flannel` 网络
 $ kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
+# 使用 `kube-router` 网络
+$ kubectl apply -f https://raw.githubusercontent.com/cloudnativelabs/kube-router/master/daemonset/kubeadm-kuberouter.yaml
 
 # Master Isolation (if single-machine Kubernetes cluster )
 $ kubectl taint nodes --all node-role.kubernetes.io/master-
@@ -86,7 +88,7 @@ $ kubectl proxy
 
 ```bash
 # 创建 ServiceAccount kubernetes-dashboard-admin 并绑定集群管理员权限
-$ kubectl apply -f https://raw.githubusercontent.com/gotok8s/gotok8s/master/dashboard-admin.yaml
+$ kubectl apply -f https://raw.githubusercontent.com/datheng/comeonk8s/master/dashboard-admin.yaml
 
 # 获取登陆 token
 $ kubectl -n kubernetes-dashboard describe secret $(kubectl -n kubernetes-dashboard get secret | grep kubernetes-dashboard-admin | awk '{print $1}')
